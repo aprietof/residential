@@ -1,0 +1,9 @@
+[18-Sep-2017 04:11:51 America/Chicago] PHP Fatal error:  Call to undefined function add_action() in /home1/prietoweb/public_html/wp-content/plugins/hello.php on line 60
+[10-Oct-2017 07:13:02 America/Chicago] PHP Fatal error:  Call to undefined function add_action() in /home1/prietoweb/public_html/wp-content/plugins/hello.php on line 60
+[10-Oct-2017 12:03:14 America/Chicago] PHP Fatal error:  Call to undefined function add_action() in /home1/prietoweb/public_html/wp-content/plugins/hello.php on line 60
+[15-Nov-2017 23:45:45 America/Chicago] PHP Fatal error:  Call to undefined function add_action() in /home1/prietoweb/public_html/wp-content/plugins/hello.php on line 60
+[16-Nov-2017 18:04:41 America/Chicago] PHP Fatal error:  Call to undefined function add_action() in /home1/prietoweb/public_html/wp-content/plugins/hello.php on line 60
+[18-Nov-2017 10:11:14 America/Chicago] PHP Fatal error:  Call to undefined function add_action() in /home1/prietoweb/public_html/wp-content/plugins/hello.php on line 60
+[19-Nov-2017 09:41:18 America/Chicago] PHP Fatal error:  Call to undefined function add_action() in /home1/prietoweb/public_html/wp-content/plugins/hello.php on line 60
+[23-Jan-2018 13:55:23 America/Chicago] PHP Fatal error:  Call to undefined function add_action() in /home1/prietoweb/public_html/wp-content/plugins/hello.php on line 60
+[27-Jan-2018 04:29:37 America/Chicago] PHP Fatal error:  Call to undefined function add_action() in /home1/prietoweb/public_html/wp-content/plugins/hello.php on line 60

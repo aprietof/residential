@@ -1,0 +1,19 @@
+<!-- start Simple Custom CSS and JS -->
+<style type="text/css">
+/* Add your CSS code here.
+                     
+For example:
+.example {
+    color: red;
+}
+
+For brushing up on your CSS knowledge, check out http://www.w3schools.com/css/css_syntax.asp
+
+End of comment */ 
+
+
+.featured_property .Rented, .property_listing .Rented {
+    padding: 1px 7px!important;
+  	background-color: yellowgreen!important;
+}</style>
+<!-- end Simple Custom CSS and JS -->

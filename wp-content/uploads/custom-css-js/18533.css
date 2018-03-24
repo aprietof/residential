@@ -1,0 +1,35 @@
+<!-- start Simple Custom CSS and JS -->
+<style type="text/css">
+/* Add your CSS code here.
+                     
+For example:
+.example {
+    color: red;
+}
+
+For brushing up on your CSS knowledge, check out http://www.w3schools.com/css/css_syntax.asp
+
+End of comment */ 
+
+/* in contract label inside property page */
+#carousel-listing > div.slider-property-status.ribbon-wrapper-In-Contract.In-Contract { 
+	background-color: #2e71d0;
+	padding: 5px 15px;
+}
+
+/* Search button */
+#advanced_submit_22 {
+  background-color: #FF9800!important;
+}
+
+/* Author atag */
+#colophon a.copyright-author {
+  color: #FF9800;
+}
+
+#colophon a.copyright-author:hover {
+  color: #FF9800;
+}
+
+</style>
+<!-- end Simple Custom CSS and JS -->
