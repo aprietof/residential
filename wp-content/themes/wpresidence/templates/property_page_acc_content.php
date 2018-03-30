@@ -50,7 +50,7 @@ $show_graph_prop_page= esc_html( get_option('wp_estate_show_graph_prop_page', ''
 
 
             
-<div class="panel-group property-panel" id="accordion_prop_addr" style="margin-top: 0;">
+<div class="panel-group property-panel" id="accordion_prop_addr">
     <div class="panel panel-default">
        <div class="panel-heading">
             <a data-toggle="collapse" data-parent="#accordion_prop_addr" href="#collapseTwo">
