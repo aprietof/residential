@@ -17,12 +17,40 @@ get_template_part ('/templates/download_pdf');
 $show_graph_prop_page= esc_html( get_option('wp_estate_show_graph_prop_page', '') );
 ?>
 
+<!-- Open House -->
+<?php
+    $open_house      = get_post_meta( $post->ID, 'open_house', true );
+    $open_house_date = $open_house['date'];
+    $open_house_from = $open_house['from'];
+    $open_house_to   = $open_house['to'];
+?>
 
+<?php if($open_house_date) : ?>
+<div class="panel-group property-panel" id="accordion_prop_open_house" style="margin-top: 26px;">
+    <div class="panel panel-default">
+       <div class="panel-heading">
+            <a data-toggle="collapse" data-parent="#accordion_prop_open_house" href="#collapseOpenHouse">
+                <h4 class="panel-title">  
+                <?php _e('Open House','wpestate'); ?>
+                </h4>    
+            </a>
+       </div>
+       <div id="collapseOpenHouse" class="panel-collapse collapse in">
+         <div class="panel-body">
+         <p style="padding-top: 10px;"><strong>Date:</strong> <?php echo $open_house_date; ?></p>
+         <p><strong>From:</strong> <?php echo $open_house_from; ?> </p>
+         <p style="margin-bottom: 0"><strong>To:</strong> <?php echo $open_house_to; ?></p>
+         </div>
+       </div>
+    </div>            
+</div>   
+<?php endif ?>
+<!-- /Open House -->
 
 
 
             
-<div class="panel-group property-panel" id="accordion_prop_addr">
+<div class="panel-group property-panel" id="accordion_prop_addr" style="margin-top: 0;">
     <div class="panel panel-default">
        <div class="panel-heading">
             <a data-toggle="collapse" data-parent="#accordion_prop_addr" href="#collapseTwo">
