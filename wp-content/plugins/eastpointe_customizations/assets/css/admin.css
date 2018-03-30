@@ -1,0 +1,12 @@
+/* Properties Details */
+.property_prop_half > input[type='text'],
+.property_prop_half > select,
+.plan_row input[type='text'],
+.plan_row textarea {
+  width: 210px;
+}
+
+/* Admin styles */
+input[type='checkbox']:checked:before {
+  margin: -3px 0 0 -4px;
+}
