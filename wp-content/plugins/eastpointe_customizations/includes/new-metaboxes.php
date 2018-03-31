@@ -145,7 +145,7 @@ function eapt_save_events_meta( $post_id, $post ) {
     wp_remove_object_terms( $post_id, $open_house_category_id, 'property_category' );
 
     // Remove Open house label if is open house
-    if(get_post_meta( $post_id, 'property_status', true ) == 'Open House' ) delete_post_meta( $post_id, 'property_status');
+    if(get_post_meta( $post_id, 'property_status', true ) == 'Open House' ) update_post_meta( $post_id, 'property_status', 'normal' );
   }
 
 
