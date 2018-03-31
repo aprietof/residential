@@ -57,7 +57,7 @@ function eapt_add_open_house_meta_box_html() {
   </script>
 
   <!-- Open House MetaBox -->
-  <label style="min-width: 50px;display: inline-block;">Date:</label>
+  <label style="min-width: 50px;display: inline-block;"><?php echo __( 'Date:', 'wpestate' );?></label>
   <input id="open_house_date" type="text" name="open_house_date" placeholder="DD/MM/YY"
     value="<?php echo esc_textarea( $open_house_date ); ?>"  style="margin-top: 5px;"/>
 
@@ -70,9 +70,9 @@ function eapt_add_open_house_meta_box_html() {
   ?>
   
   <div style="margin-top:10px;">
-    <label style="min-width: 50px;display: inline-block;">From:</label>
+    <label style="min-width: 50px;display: inline-block;"><?php echo __( 'From:', 'wpestate' );?></label>
     <select name="open_house_time_from" id="open_house_time_from" style="width: 62%">
-      <option value="">Select Time</option>
+      <option value=""><?php echo __( 'Select Time', 'wpestate' );?></option>
       <?php 
         $output = '';
         for( $i = 0; $i < count($time_options); $i++ ) {
@@ -84,9 +84,9 @@ function eapt_add_open_house_meta_box_html() {
   </div>
   
   <div style="margin-top:10px;">
-    <label style="min-width: 50px;display: inline-block;">To:</label>
+    <label style="min-width: 50px;display: inline-block;"><?php echo __( 'To:', 'wpestate' );?></label>
     <select name="open_house_time_to" id="open_house_time_to" style="width: 62%">
-      <option value="">Select Time</option>
+      <option value=""><?php echo __( 'Select Time', 'wpestate' );?></option>
       <?php 
         $output = '';
         for( $i = 0; $i < count($time_options); $i++ ) {
