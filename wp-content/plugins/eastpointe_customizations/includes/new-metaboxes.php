@@ -115,7 +115,33 @@ function eapt_save_events_meta( $post_id, $post ) {
 	// Save into $events_meta array
 	$events_meta['open_house']['date'] = esc_textarea( $_POST['open_house_date'] );
 	$events_meta['open_house']['from'] = $events_meta['open_house']['date'] === '' ? '' : esc_textarea( $_POST['open_house_time_from'] );
-	$events_meta['open_house']['to']   = $events_meta['open_house']['date'] === '' ? '' : esc_textarea( $_POST['open_house_time_to'] );
+  $events_meta['open_house']['to']   = $events_meta['open_house']['date'] === '' ? '' : esc_textarea( $_POST['open_house_time_to'] );
+  
+  // Add or Remove Open House Category
+  if( $_POST['open_house_date'] && $_POST['open_house_time_from'] && $_POST['open_house_time_to'] ) {
+    
+    // Add Open House Category
+    wp_set_post_terms( $post_id, array( 95 ), 'property_category', true );
+
+    // Add Open House Label
+    update_post_meta( $post_id, 'property_status', 'Open House' );
+  } else {
+
+    // Clean all values
+    $events_meta['open_house']['date'] = '';
+	  $events_meta['open_house']['from'] = '';
+    $events_meta['open_house']['to']   = '';
+
+    // Remove Open House Category
+    wp_remove_object_terms( $post_id, 95, 'property_category' );
+
+    // Remove Open house label if is open house
+    if(get_post_meta( $post_id, 'property_status', true ) == 'Open House' ) delete_post_meta( $post_id, 'property_status');
+  }
+
+  // get_post_meta( $post_id, 'property_status', true );
+
+  // add_post_meta( $post_id, 'property_status', 'Open House' );
 
 	foreach ( $events_meta as $key => $value ) :
 
@@ -132,4 +158,4 @@ function eapt_save_events_meta( $post_id, $post ) {
 		}
 	endforeach;
 }
-add_action( 'save_post', 'eapt_save_events_meta', 1, 2 );
+add_action( 'save_post', 'eapt_save_events_meta', 10, 2 );
