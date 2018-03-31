@@ -4,6 +4,7 @@ global $propid;
 global $agent_wid;
 
 $agent_id       = intval( get_post_meta($post->ID, 'property_agent', true) );
+$second_agent_id = intval( get_post_meta($post->ID, 'second_property_agent', true) );
 
  
  if($agent_id==0){
@@ -27,7 +28,7 @@ $agent_id       = intval( get_post_meta($post->ID, 'property_agent', true) );
     }else{
         $preview_img         = $preview[0];
     }
-}            
+} 
 
 
 
@@ -42,7 +43,15 @@ $agent_id       = intval( get_post_meta($post->ID, 'property_agent', true) );
     $agent_wid=$agent_id;
     if ( get_the_author_meta('user_level',$agent_wid) !=10){
         get_template_part('templates/agent_unit_widget'); 
-        get_template_part('templates/agent_contact'); 
+        // get_template_part('templates/agent_contact'); 
+    }
+
+    wp_reset_query();
+    $agent_wid=$second_agent_id;
+    if ( get_the_author_meta('user_level',$agent_wid) !=10){
+        get_template_part('templates/agent_unit_widget'); 
+        // get_template_part('templates/agent_contact'); 
     }
 ?>
+
 </div>
