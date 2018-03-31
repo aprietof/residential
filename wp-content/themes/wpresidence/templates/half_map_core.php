@@ -164,7 +164,7 @@ if($property_card_type==0){
                     get_template_part('templates/property_unit'.$property_card_type_string);
                 endwhile;                
             }else{
-                print '<h4>'.__('You don\'t have any properties yet!','wpestate').'</h4>';
+                print '<h4>'.__('No properties found, please check again later.','wpestate').'</h4>';
             }
 
             wp_reset_query();               
