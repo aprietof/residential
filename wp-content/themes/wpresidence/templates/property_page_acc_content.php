@@ -19,10 +19,10 @@ $show_graph_prop_page= esc_html( get_option('wp_estate_show_graph_prop_page', ''
 
 <!-- Open House -->
 <?php
-    $open_house      = get_post_meta( $post->ID, 'open_house', true );
-    $open_house_date = $open_house['date'];
-    $open_house_from = $open_house['from'];
-    $open_house_to   = $open_house['to'];
+    $open_house      = get_post_meta( $post->ID, 'open_house', false );
+    $open_house_date = $open_house[0]['date'];
+    $open_house_from = $open_house[0]['from'];
+    $open_house_to   = $open_house[0]['to'];
 ?>
 
 <?php if($open_house_date) : ?>

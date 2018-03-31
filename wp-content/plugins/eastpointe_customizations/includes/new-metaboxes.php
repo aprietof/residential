@@ -24,9 +24,9 @@ function eapt_add_open_house_meta_box_html() {
 	wp_nonce_field( basename( __FILE__ ), 'open_house_fields' );
 
   $open_house      = get_post_meta( $post->ID, 'open_house', false );
-  $open_house_date = $open_house['date'];
-  $open_house_from = $open_house['from'];
-  $open_house_to   = $open_house['to'];
+  $open_house_date = $open_house[0]['date'];
+  $open_house_from = $open_house[0]['from'];
+  $open_house_to   = $open_house[0]['to'];
   
   // Enqueue jQuery UI CSS smoothness theme
   wp_enqueue_style( 'jquery-ui-style', '//ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/themes/smoothness/jquery-ui.css', true);
