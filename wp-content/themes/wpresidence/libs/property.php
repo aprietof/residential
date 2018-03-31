@@ -172,6 +172,7 @@ if( !function_exists('estate_tabbed_interface') ):
                 print'</div>
                 <div class="property_tab_item_content" id="property_agent"><h3>'.__('Responsable Agent / User','wpestate').'</h3>';
                 agentestate_box();
+                second_agentestate_box();
                 print'</div>
                 <div class="property_tab_item_content" id="property_floor"><h3>'.__('Floor Plans','wpestate').'</h3>';
                 floorplan_box();
@@ -709,6 +710,7 @@ function agentestate_box() {
     $originalpost   =   $post;
     $agent_list     =   '';
     $picked_agent   =   (get_post_meta($mypost, 'property_agent', true));
+    $second_agent = (get_post_meta($mypost, 'second_property_agent', true));
 
     $args = array(
        'post_type'      => 'estate_agent',
@@ -721,6 +723,8 @@ function agentestate_box() {
     while ($agent_selection->have_posts()){
         $agent_selection->the_post();  
         $the_id       =  get_the_ID();
+
+        if ( $the_id == $second_agent ) { continue; } // Skip Second Agent
 
         $agent_list  .=  '<option value="' . $the_id . '"  ';
         if ($the_id == $picked_agent) {
@@ -743,40 +747,92 @@ function agentestate_box() {
         </div>';  
     
     
-    $originalpost   =   $post;
-    $blog_list      =   '';
-    $original_user  =   wpsestate_get_author();
+    // $originalpost   =   $post;
+    // $blog_list      =   '';
+    // $original_user  =   wpsestate_get_author();
 
 
     
-    $blogusers = get_users( 'blog_id=1&orderby=nicename&role=subscriber' );
+    // $blogusers = get_users( 'blog_id=1&orderby=nicename&role=subscriber' );
 
-    foreach ( $blogusers as $user ) {
+    // foreach ( $blogusers as $user ) {
  
-        $the_id=$user->ID;
-        $blog_list  .=  '<option value="' . $the_id . '"  ';
-            if ($the_id == $original_user) {
-                $blog_list.=' selected="selected" ';
-            }
-        $blog_list.= '>' .$user->user_login . '</option>';
-    }
+    //     $the_id=$user->ID;
+    //     $blog_list  .=  '<option value="' . $the_id . '"  ';
+    //         if ($the_id == $original_user) {
+    //             $blog_list.=' selected="selected" ';
+    //         }
+    //     $blog_list.= '>' .$user->user_login . '</option>';
+    // }
 
 
     
       
-    print '
-    <div class="property_prop_half">  
-        <label for="property_user">'.__('User: ','wpestate').'</label><br />
-        <select id="property_user" style="width: 237px;" name="property_user">
-            <option value=""></option>
-            <option value="1">admin</option>
-            '. $blog_list .'
-        </select>
-      </div>';  
+    // print '
+    // <div class="property_prop_half">  
+    //     <label for="property_user">'.__('User: ','wpestate').'</label><br />
+    //     <select id="property_user" style="width: 237px;" name="property_user">
+    //         <option value=""></option>
+    //         <option value="1">admin</option>
+    //         '. $blog_list .'
+    //     </select>
+    //   </div>';  
     
     
 }
 endif; // end   agentestate_box  
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+///  Agent 2 box function
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+if( !function_exists('second_agentestate_box') ):
+function second_agentestate_box() {
+    global $post;
+    wp_nonce_field(plugin_basename(__FILE__), 'estate_property_noncename');
+   
+    $mypost       = $post->ID;
+    $originalpost = $post;
+    $agent_list   = '';
+    $picked_agent = (get_post_meta($mypost, 'second_property_agent', true));
+    $main_agent   = (get_post_meta($mypost, 'property_agent', true));
+
+    $args = array(
+       'post_type'      => 'estate_agent',
+       'post_status'    => 'publish',
+       'posts_per_page' => -1
+       );
+    
+    $agent_selection  =  new WP_Query($args);
+
+    while ($agent_selection->have_posts()){
+        $agent_selection->the_post();  
+        $the_id       =  get_the_ID();
+
+        if ( $the_id == $main_agent ) { continue; } // Skip Main Agent
+
+        $agent_list  .=  '<option value="' . $the_id . '"  ';
+        if ($the_id == $picked_agent) {
+            $agent_list.=' selected="selected" ';
+        }
+        $agent_list.= '>' . get_the_title() . '</option>';
+    }
+      
+    wp_reset_postdata();
+    $post = $originalpost;
+      
+    print '
+        <div class="property_prop_half">  
+        <label for="second_property_agent">'.__('Second Agent Responsible: ','wpestate').'</label><br />
+        <select id="second_property_agent" style="width: 237px;" name="second_property_agent">
+            <option value="">none</option>
+            <option value=""></option>
+            '. $agent_list .'
+        </select>
+        </div>';  
+    
+}
+endif; // end  second_agentestate_box 
 
 
 
@@ -1027,7 +1083,7 @@ function estate_box() {
     }
 
  
-    print'    
+    print'  
     <div class="property_prop_half">
         <label for="property_status">'.__('Property Status:','wpestate').'</label><br />
         <select id="property_status"  name="property_status">

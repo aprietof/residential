@@ -1093,7 +1093,8 @@ function estate_save_postdata($post_id) {
         'property_user',
         'use_floor_plans',
         'property_page_desing_local',
-        'property_list_second_content'
+        'property_list_second_content',
+        'second_property_agent'
     );
     
     $custom_fields = get_option( 'wp_estate_custom_fields', true);    
