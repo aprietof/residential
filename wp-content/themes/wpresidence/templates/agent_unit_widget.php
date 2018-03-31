@@ -66,7 +66,7 @@ if($options['content_class']=='col-md-12'){
 
 
 
-    <div class="agent_unit" data-link="<?php print esc_url($link);?>">
+    <div class="agent_unit" data-link="<?php print esc_url($link);?>" style="margin-bottom: 25px !important;">
         <div class="agent-unit-img-wrapper">
             <div class="prop_new_details_back"></div>
            <?php 
