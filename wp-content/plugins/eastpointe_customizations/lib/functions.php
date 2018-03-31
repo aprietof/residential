@@ -20,12 +20,12 @@ function eapt_change_post_status_on_sold_or_rented() {
   $rented = has_term( 'rented', 'property_category', $post_id );
 
   if( $status == 'draft' && $sold ) {
-    jp_notices_add_error('This property won\'t be published because is marked as <strong>SOLD</strong>, please uncheck the <strong>SOLD</strong> option from categories and then click <strong>PUBLISH</strong> if you wish to make it public.');
+    jp_notices_add_error('This property is no longer public because is labeled as <strong>SOLD</strong>, please uncheck the <strong>SOLD</strong> option from categories and then click <strong>PUBLISH</strong> if you wish to make it public.');
     return; 
   }
 
   if( $status == 'draft' && $rented ) {
-    jp_notices_add_error('This property won\'t be published because is marked as <strong>RENTED</strong>, please uncheck the <strong>RENTED</strong> option from categories and then click <strong>PUBLISH</strong> if you wish to make it public.');
+    jp_notices_add_error('This property is no longer public because is labeled as <strong>RENTED</strong>, please uncheck the <strong>RENTED</strong> option from categories and then click <strong>PUBLISH</strong> if you wish to make it public.');
     return;
   }
 
