@@ -99,7 +99,7 @@ function eapt_add_open_house_meta_box_html() {
   
   <button id="clearOpenHouseDate" 
     class="button button-primary button-large" 
-      style="margin-top: 20px;margin-left: 32%;background: red;border: 1px solid red;text-shadow: none; box-shadow: none;">Clear Open House Fields</button>
+      style="margin-top: 20px;width: 100%;background: red;border: 1px solid red;text-shadow: none; box-shadow: none;">Clear Open House Fields</button>
   <!-- End Open House MetaBox -->
 <?php 
 }
