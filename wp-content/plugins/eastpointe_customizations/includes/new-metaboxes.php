@@ -43,10 +43,15 @@ function eapt_add_open_house_meta_box_html() {
 
       // Clear open house date button fields on click
       $('#clearOpenHouseDate').click(function(event) {
+        var confirmation = confirm("Are you sure you want to clear <Open House> fields?");
         event.preventDefault();
-        $('#open_house_date').val('');
-        $('#open_house_time_from').val('');
-        $('#open_house_time_to').val('');
+        if (confirmation) {
+          $('#open_house_date').val('');
+          $('#open_house_time_from').val('');
+          $('#open_house_time_to').val('');
+        } else {
+          return
+        }
       });
     });
   </script>
@@ -139,9 +144,6 @@ function eapt_save_events_meta( $post_id, $post ) {
     if(get_post_meta( $post_id, 'property_status', true ) == 'Open House' ) delete_post_meta( $post_id, 'property_status');
   }
 
-  // get_post_meta( $post_id, 'property_status', true );
-
-  // add_post_meta( $post_id, 'property_status', 'Open House' );
 
 	foreach ( $events_meta as $key => $value ) :
 
