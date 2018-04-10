@@ -11,11 +11,12 @@ jQuery(document).ready(function( $ ){
 End of comment */ 
 
 var interval = setInterval(function(){
-	if (window.location.href.indexOf("action") > -1) {
+	if (window.location.href.indexOf("properties") > -1 || window.location.href.indexOf("preview") > -1) {
 		document.getElementsByClassName('header_media with_search_2')[0].children[0].style.display = "none";
       	clearInterval('interval');
 	}
 },1);
+
 
 </script>
 <!-- end Simple Custom CSS and JS -->
