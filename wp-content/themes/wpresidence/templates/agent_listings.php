@@ -43,40 +43,56 @@ $leftcompare        =   1;
 $property_unit_slider = get_option('wp_estate_prop_list_slider','');
 
 $args = array(
-    'post_type'         => 'estate_property',
-    'post_status'       => 'publish',
-    'paged'             => $paged,
-    'posts_per_page'    => 9,
-    'meta_key'          => 'prop_featured',
-    'orderby'           => 'meta_value',
-    'order'             => 'DESC',
-    'meta_query'        => array(
-                                array(
-                                    'key'   => 'property_agent',
-                                    'value' => $agent_id,
-                                )
-                        )
-                );
+    'post_type'      => 'estate_property',
+    'post_status'    => 'publish',
+    'paged'          => $paged,
+    'posts_per_page' => 9,
+    'meta_key'       => 'property_price',
+    'meta_type'      => 'NUMERIC',
+    'orderby'        => 'meta_value_num',
+    'order'          => 'DESC',
+    'meta_query'     => array(
+        'relation' => 'OR',
+        array(
+            'key'   => 'property_agent',
+            'value' => $agent_id,
+        ),
+        array(
+            'key'   => 'second_property_agent',
+            'value' => $agent_id,
+        )
+    )
+);
 
 $mapargs = array(
     'post_type'         => 'estate_property',
     'post_status'       => 'publish',
     'posts_per_page'    => -1,
     'meta_query'        => array(
-                                array(
-                                    'key'   => 'property_agent',
-                                    'value' => $agent_id,
-                                )
-                        )
-                );
+        'relation' => 'OR',
+        array(
+            'key'   => 'property_agent',
+            'value' => $agent_id,
+        ),
+        array(
+            'key'   => 'second_property_agent',
+            'value' => $agent_id,
+        )
+    )
+);
 
-add_filter( 'posts_orderby', 'wpestate_my_order' );
-$prop_selection =   new WP_Query($args);
-remove_filter( 'posts_orderby', 'wpestate_my_order' );
+// add_filter( 'posts_orderby', 'wpestate_my_order' );
+// $prop_selection = new WP_Query($args);
+// remove_filter( 'posts_orderby', 'wpestate_my_order' );
+/*-------------- End Not In Contract Properties Main Agent ----------------*/
+
     
 //$selected_pins  =   wpestate_listing_pins($args);//call the new pins
 
 
+/* All Properties Selection From Queries
+--------------------------------------------------------------*/
+$prop_selection = new WP_Query($args);
 
 if ( $prop_selection->have_posts() ) {
     $show_compare   =   1;
