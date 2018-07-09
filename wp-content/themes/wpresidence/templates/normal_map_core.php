@@ -17,6 +17,21 @@ global $no_listins_per_row;
 global $wpestate_uset_unit;
 global $included_ids;
 
+
+/* CHANGE MAIN PROPERTIES QUERY ORDER BY [PRICE FROM HIGH TO LOW]
+----------------------------------------------------------------------*/
+
+/* Change Properties Query Values */
+$prop_selection->query["meta_key"]  = 'property_price';
+$prop_selection->query["meta_type"] = 'NUMERIC';
+$prop_selection->query["orderby"]   = 'meta_value_num';
+
+/* Update Properties Query */
+$prop_selection = new WP_Query($prop_selection->query);
+
+/* --------------------------------------------------------------------*/
+
+
 $wpestate_uset_unit         =   intval ( get_option('wpestate_uset_unit','') );
 $no_listins_per_row         =   intval( get_option('wp_estate_listings_per_row', '') );
 $custom_unit_structure      =   get_option('wpestate_property_unit_structure');
