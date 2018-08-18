@@ -245,7 +245,7 @@ function wpestate_scripts() {
         if (esc_html ( get_option('wp_estate_ssl_map','') ) =='yes'){
             wp_enqueue_script('googlemap', 'https://maps-api-ssl.google.com/maps/api/js?libraries=places&amp;key='.esc_html(get_option('wp_estate_api_key', '') ),array('jquery'), '1.0', false);        
         }else{
-            wp_enqueue_script('googlemap', 'http://maps.googleapis.com/maps/api/js?libraries=places&amp;key='.esc_html(get_option('wp_estate_api_key', '') ),array('jquery'), '1.0', false);        
+            wp_enqueue_script('googlemap', 'https://maps.googleapis.com/maps/api/js?libraries=places&amp;key='.esc_html(get_option('wp_estate_api_key', '') ),array('jquery'), '1.0', false);        
         }
         
         wp_enqueue_script('infobox',  get_template_directory_uri() .'/js/infobox'.$mimify_prefix.'.js',array('jquery'), '1.0', true); 
@@ -806,7 +806,7 @@ function wpestate_admin($hook_suffix) {
         if (esc_html ( get_option('wp_estate_ssl_map','') ) =='yes'){
             wp_enqueue_script('googlemap',      'https://maps-api-ssl.google.com/maps/api/js?key='.esc_html(get_option('wp_estate_api_key', '') ).'',array('jquery'), '1.0', false);
         }else{
-            wp_enqueue_script('googlemap',      'http://maps.googleapis.com/maps/api/js?key='.esc_html(get_option('wp_estate_api_key', '') ).'',array('jquery'), '1.0', false);
+            wp_enqueue_script('googlemap',      'https://maps.googleapis.com/maps/api/js?key='.esc_html(get_option('wp_estate_api_key', '') ).'',array('jquery'), '1.0', false);
        }
         
        wp_enqueue_script('admin_google',   get_template_directory_uri().'/js/google_js/admin_google.js',array('jquery'), '1.0', true); 
