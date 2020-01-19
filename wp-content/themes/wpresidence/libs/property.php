@@ -1082,28 +1082,37 @@ function estate_box() {
       print   $normal_selected= ' selected ' ;
     }
 
- 
-    print'  
-    <div class="property_prop_half">
-        <label for="property_status">'.__('Property Status:','wpestate').'</label><br />
-        <select id="property_status"  name="property_status">
-        <option value="normal" '.$normal_selected.'>normal</option>
-        ' . $property_status . '
-        </select>
-    </div>
+
     
+
+    /* SHOW LABEL DROPDOWN OPTIONS
+    ------------------------------------- */
+    $show_property_status_options = false;
+
+    
+    if ($show_property_status_options) {
+        ?>
+        <div class="property_prop_half">
+            <label for="property_status"><?php echo __('Property Status:','wpestate'); ?></label><br />
+            <select id="property_status"  name="property_status">
+            <option value="normal" <?php echo $normal_selected; ?>>normal</option>
+            <?php echo $property_status; ?>
+            </select>
+        </div>
+        <?php
+    }
+    /* ------------------------------------ */
+
+    print'  
      <div class="property_prop_half" style="padding-top:20px;">
-            <input type="hidden" name="prop_featured" value="0">
-            <input type="checkbox"  id="prop_featured" name="prop_featured" value="1" ';
-            if (intval(get_post_meta($mypost, 'prop_featured', true)) == 1) {
-                print'checked="checked"';
-            }
-            print' />
-            <label class="checklabel" for="prop_featured">'.__('Make it Featured Property','wpestate').'</label>
+        <input type="hidden" name="prop_featured" value="0">
+        <input type="checkbox"  id="prop_featured" name="prop_featured" value="1" ';
+        if (intval(get_post_meta($mypost, 'prop_featured', true)) == 1) {
+            print'checked="checked"';
+        }
+        print' />
+        <label class="checklabel" for="prop_featured">'.__('Make it Featured Property','wpestate').'</label>
     </div>    
-
-
-
     ';
 }
 endif; // end   estate_box 
