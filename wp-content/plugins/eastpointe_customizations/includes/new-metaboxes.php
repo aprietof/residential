@@ -164,4 +164,4 @@ function eapt_save_events_meta( $post_id, $post ) {
 		}
 	endforeach;
 }
-add_action( 'save_post', 'eapt_save_events_meta', 10, 2 );
+add_action( 'save_post', 'eapt_save_events_meta', 1, 2 );
