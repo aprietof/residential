@@ -368,13 +368,10 @@ $is_custom_desing=11;
                             <div class="listing_actions">
 
                                 <div class="share_unit">
-                                    <a href="http://www.facebook.com/sharer.php?u=<?php echo esc_url($link); ?>&amp;t=<?php echo urlencode(get_the_title()); ?>" target="_blank" class="social_facebook"></a>
-                                    <a href="http://twitter.com/home?status=<?php echo urlencode(get_the_title().' '.$link); ?>" class="social_tweet" target="_blank"></a>
-                                    <a href="https://plus.google.com/share?url=<?php echo esc_url($link); ?>" onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;" target="_blank" class="social_google"></a> 
-                                    <a href="http://pinterest.com/pin/create/button/?url=<?php echo esc_url($link); ?>&amp;media=<?php if (isset( $pinterest[0])){ echo esc_url($pinterest[0]); }?>&amp;description=<?php echo urlencode(get_the_title()); ?>" target="_blank" class="social_pinterest"></a>
+                                    <a href="http://www.facebook.com/sharer.php?u=<?php echo esc_url($link); ?>&amp;t=<?php echo urlencode(get_the_title()); ?>" target="_blank" class="share-button social_facebook"></a>
+                                    <a href="http://twitter.com/share?url=<?php echo esc_url($link); ?>" class="share-button social_tweet" target="_blank"></a>
+                                    <a href="https://www.linkedin.com/shareArticle?mini=true&url=<?php echo esc_url("https://www.eastpointeny.com/properties/200-west-79th-street-penthouse-l/"); ?>&title=<?php echo urlencode(get_the_title()); ?>" class="share-button social_linkedin" target="_blank"></a>
                                 </div>
-
-
 
                                 <span class="share_list"  data-original-title="<?php _e('share','wpestate');?>" ></span>
                                 <span class="icon-fav <?php echo esc_html($favorite_class);?>" data-original-title="<?php print $fav_mes; ?>" data-postid="<?php echo intval($post->ID); ?>"></span>
@@ -383,6 +380,20 @@ $is_custom_desing=11;
                                 <span class="compare-action" data-original-title="<?php  _e('compare','wpestate');?>" data-pimage="<?php if( isset($compare[0])){echo esc_html($compare[0]);} ?>" data-pid="<?php echo intval($post->ID); ?>"></span>
                                 <?php } ?>
                             </div>
+
+                            <script>
+                                const shareButtons = document.getElementsByClassName('share-button');
+
+                                function openShareWindow(button) {
+                                    button.addEventListener("click", function(e) {
+                                        e.preventDefault();
+                                        window.open(button.getAttribute('href'), 'shareWindow', 'height=450, width=550, top=' + (window.innerHeight / 2 - 275) + ', left=' + (window.innerWidth / 2 - 225) + ', toolbar=0, location=0, menubar=0, directories=0, scrollbars=0');
+                                        return;
+                                    });
+                                }
+
+                                Array.from(shareButtons).forEach(button => openShareWindow(button));
+                            </script>
                         <?php
                         } 
 
