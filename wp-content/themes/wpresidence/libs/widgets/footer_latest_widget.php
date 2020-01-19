@@ -353,7 +353,14 @@ class Footer_latest_widget extends WP_Widget {
 
                 $meta_directions='DESC';
                 $meta_order='prop_featured';
-             
+
+                // EXCLUDE SOLD OR RENTED PROPERTIES FROM LOOP (TAXONOMY QUERY)
+                $not_in_sold_or_rented_property_category_array = array(
+                    'taxonomy' => 'property_category',
+                    'terms' => array( 'rented', 'sold' ),
+                    'field' => 'slug',
+                    'operator' => 'NOT IN',
+                );
     
                 $args = array(
                     'post_type'         => 'estate_property',
@@ -369,8 +376,9 @@ class Footer_latest_widget extends WP_Widget {
                                                 $categ_array,
                                                 $action_array,
                                                 $city_array,
-                                                $area_array
-                                            )
+                                                $area_array,
+                                                $not_in_sold_or_rented_property_category_array
+                                        )
                 );
           //   print_r($args);
              
