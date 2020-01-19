@@ -509,10 +509,8 @@ function wpestate_list_agents_function($attributes, $content = null) {
                 'post_status'       => 'publish',
                 'paged'             => 0,
                 'posts_per_page'    => $post_number_total,
-           
                 'orderby'           => $orderby,
                 'order'             => 'DESC',
-            
                 'tax_query'         => array( 
                                         $category_array,
                                         $action_array,
@@ -882,7 +880,19 @@ function wpestate_slider_recent_posts_pictures($attributes, $content = null) {
     if($items_per_row==3){
         $three_per_row_class = ' three_per_row ';
     }
-  
+
+    ///////////////  ADD CUSTOM ARGS TO RECENT POSTS QUERY ////////////
+    $args['tax_query'] = array(
+        // Exclude rented and sold properties
+        array(
+            'taxonomy' => 'property_category',
+            'terms' => array( 'rented', 'sold' ),
+            'field' => 'slug',
+            'operator' => 'NOT IN',
+        ),
+    );
+    $recent_posts = new WP_Query($args);
+    ///////////////////////////////////////////////////////////////////
     
     $return_string .=  '<div class="shortcode_slider_wrapper" >';
     
