@@ -370,7 +370,7 @@ $is_custom_desing=11;
                                 <div class="share_unit">
                                     <a href="http://www.facebook.com/sharer.php?u=<?php echo esc_url($link); ?>&amp;t=<?php echo urlencode(get_the_title()); ?>" target="_blank" class="share-button social_facebook"></a>
                                     <a href="http://twitter.com/share?url=<?php echo esc_url($link); ?>" class="share-button social_tweet" target="_blank"></a>
-                                    <a href="https://www.linkedin.com/shareArticle?mini=true&url=<?php echo esc_url("https://www.eastpointeny.com/properties/200-west-79th-street-penthouse-l/"); ?>&title=<?php echo urlencode(get_the_title()); ?>" class="share-button social_linkedin" target="_blank"></a>
+                                    <a href="https://www.linkedin.com/shareArticle?mini=true&url=<?php echo esc_url($link); ?>&title=<?php echo urlencode(get_the_title()); ?>" class="share-button social_linkedin" target="_blank"></a>
                                 </div>
 
                                 <span class="share_list"  data-original-title="<?php _e('share','wpestate');?>" ></span>
