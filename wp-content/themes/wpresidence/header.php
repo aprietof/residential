@@ -42,14 +42,21 @@ if( is_tax() ) {
     echo '<meta name="description" content="'.strip_tags( term_description('', get_query_var( 'taxonomy' ) )).'" >';
 }
 
-if (get_post_type()== 'estate_property'){
-    $image_id       =   get_post_thumbnail_id();
-    $share_img= wp_get_attachment_image_src( $image_id, 'full'); 
+if (get_post_type() == 'estate_property'){
+    $image_id = get_post_thumbnail_id();
+    $share_img = wp_get_attachment_image_src( $image_id, 'full'); 
     $the_post = get_post($post->ID);
     ?>
     <meta property="og:image" content="<?php echo esc_url($share_img[0]); ?>"/>
     <meta property="og:image:secure_url" content="<?php echo esc_url($share_img[0]); ?>" />
-    <meta property="og:description"        content=" <?php echo wp_strip_all_tags( $the_post->post_content);?>" />
+    <meta property="og:title" content="<?php echo wp_strip_all_tags($the_post->post_title);?>">
+    <meta property="og:description" content="<?php echo wp_strip_all_tags( $the_post->post_content);?>" />
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="<?php echo wp_get_canonical_url($the_post);?>">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="<?php echo esc_url($share_img[0]); ?>">
+    <meta name="twitter:title" content="<?php echo wp_strip_all_tags($the_post->post_title);?>">
+    <meta name="twitter:description" content="<?php echo wp_strip_all_tags($the_post->post_content);?>">
 <?php 
 }   
     if(is_singular('wpestate_search') || is_singular('wpestate_invoice')){
