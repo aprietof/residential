@@ -382,7 +382,7 @@ $is_custom_desing=11;
                             </div>
 
                             <script>
-                                const shareButtons = document.getElementsByClassName('share-button');
+                                var shareButtons = document.getElementsByClassName('share-button');
 
                                 function openShareWindow(button) {
                                     button.addEventListener("click", function(e) {
