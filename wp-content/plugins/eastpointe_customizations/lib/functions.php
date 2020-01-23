@@ -34,22 +34,25 @@ function eapt_taxonomy_change_side_effects() {
   if( $sold ) {
     // Update Label
     update_post_meta( $post_id, 'property_status', 'Sold' );
+    return;
   }
 
   if( $rented ) {
     // Update Label
     update_post_meta( $post_id, 'property_status', 'Rented' );
+    return;
   }
 
   if( $in_contract ) {
     // Update Label
     update_post_meta( $post_id, 'property_status', 'In Contract' );
+    return;
   }
 
-   if( $status === 'draft' && $off_the_market ) {
+  if( $status === 'draft' && $off_the_market ) {
 
     // Update Label
-    update_post_meta( $post_id, 'property_status', 'Of the Market' );
+    update_post_meta( $post_id, 'property_status', 'normal' );
 
     // Display Error
     jp_notices_add_error('This property is no longer public because <strong>OFF THE MARKET</strong> category is checked, please uncheck <strong>OFF THE MARKET</strong> from categories and then click <strong>PUBLISH</strong> if you wish to make it public.');
@@ -62,8 +65,18 @@ function eapt_taxonomy_change_side_effects() {
     wp_update_post( array( 'ID' =>  $post_id, 'post_status' =>  'draft' ) );
 
     // Update Label
-    update_post_meta( $post_id, 'property_status', 'Of the Market' );
+    update_post_meta( $post_id, 'property_status', 'normal' );
+    return;
   }
+
+  if( ! ($sold || $rented || $in_contract || $off_the_market ) ){
+
+    // Default label (NO LABEL)
+    update_post_meta( $post_id, 'property_status', 'normal' );
+    return;
+  }
+
+  return null;
 }
 add_action( 'save_post', 'eapt_taxonomy_change_side_effects', 10, 2 );
 

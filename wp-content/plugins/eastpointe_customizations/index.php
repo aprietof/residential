@@ -11,8 +11,12 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 $plugin_directory = dirname( __FILE__ );
 
-include $plugin_directory . '/lib/notifications.php';
-include $plugin_directory . '/lib/functions.php';
-require_once $plugin_directory . '/includes/new-metaboxes.php';
+foreach ( glob( $plugin_directory . '/lib/*.php' ) as $function_filename ) {
+  require_once $function_filename;
+}
+
+foreach ( glob( $plugin_directory . '/includes/*.php' ) as $function_filename ) {
+  require_once $function_filename;
+}
 
 
