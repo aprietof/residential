@@ -3182,6 +3182,9 @@ if( !function_exists('wpestate_custom_adv_ajax_filter_listings_search') ):
         
         
         ////////////////////////////////////////////////////////// end in case of slider search 
+
+        // Exclude sold and rented
+        $args['tax_query'][] = eapt_not_in_sold_or_rented_tax_query_array();
        
         if($id_array!=0){
             $prop_selection     = new WP_Query($args);
