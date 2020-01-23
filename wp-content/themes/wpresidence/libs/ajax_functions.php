@@ -2838,8 +2838,8 @@ if( !function_exists('ajax_filter_listings') ):
         $paged      =   intval( $_POST['newpage'] );
         $prop_no    =   intval( get_option('wp_estate_prop_no', '') );
             
-        
-
+        // Exclude sold and rented
+        $not_in_sold_or_rented_tax_query_array = eapt_not_in_sold_or_rented_tax_query_array();
 
         $args = array(
             'cache_results'             =>  false,
@@ -2857,7 +2857,8 @@ if( !function_exists('ajax_filter_listings') ):
                                         $categ_array,
                                         $action_array,
                                         $city_array,
-                                        $area_array
+                                        $area_array,
+                                        $not_in_sold_or_rented_tax_query_array
                                 )
         );
     
