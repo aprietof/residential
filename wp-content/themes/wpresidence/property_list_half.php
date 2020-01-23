@@ -212,6 +212,15 @@ $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 if( is_front_page() ){
      $paged= (get_query_var('page')) ? get_query_var('page') : 1;
 }
+
+
+// EXCLUDE SOLD OR RENTED PROPERTIES FROM LOOP (TAXONOMY QUERY)
+$not_in_sold_or_rented_property_category_array = array(
+    'taxonomy' => 'property_category',
+    'terms' => array( 'rented', 'sold' ),
+    'field' => 'slug',
+    'operator' => 'NOT IN',
+);
             
             
 $args = array(
@@ -228,7 +237,8 @@ $args = array(
                                 $categ_array,
                                 $action_array,
                                 $city_array,
-                                $area_array
+                                $area_array,
+                                $not_in_sold_or_rented_property_category_array
                             )
 );
 
