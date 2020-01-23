@@ -74,7 +74,9 @@ endif;
 /// compose wp_query
 ////////////////////////////////////////////////////////////////////////////
 
-$args=array(
+$not_in_sold_or_rented_tax_query_array = eapt_not_in_sold_or_rented_tax_query_array();
+
+$args = array(
     'showposts'             => $similar_no,      
     'ignore_sticky_posts'   => 0,
     'post_type'             => 'estate_property',
@@ -84,7 +86,8 @@ $args=array(
     'relation'              => 'AND',
                                $categ_array,
                                $action_array,
-                               $city_array
+                               $city_array,
+                               $not_in_sold_or_rented_tax_query_array
                                )
 );
 
