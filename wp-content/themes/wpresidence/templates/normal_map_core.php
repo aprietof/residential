@@ -26,6 +26,11 @@ $prop_selection->query["meta_key"]  = 'property_price';
 $prop_selection->query["meta_type"] = 'NUMERIC';
 $prop_selection->query["orderby"]   = 'meta_value_num';
 
+/* Exclude sold and rented properties from query */
+if( !( is_page('rented') || is_page('sold') ) ){
+    $prop_selection->query["tax_query"][] = eapt_not_in_sold_or_rented_tax_query_array();
+}
+
 /* Update Properties Query */
 $prop_selection = new WP_Query($prop_selection->query);
 
