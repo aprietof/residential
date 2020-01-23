@@ -24,7 +24,7 @@ function wpestate_search_results_custom($tip=''){
     $action_array           =   '';
     $categ_array            =   '';
     $meta_query             =   '';
-    $included_ids           =   '';
+    $included_ids           =   [];
     $id_array               =   '';
     $countystate_array      =   '';
     $allowed_html           =   array();
@@ -248,7 +248,7 @@ function wpestate_search_results_custom($tip=''){
                 $compare_array['value']      = array($price_low, $price_max);
                 $compare_array['type']       = 'numeric';
                 $compare_array['compare']    = 'BETWEEN';
-                $included_ids[]= $compare_array;
+                // $included_ids[]= $compare_array;
                 //$meta_query[]                = $compare_array;
                 
             }else{
@@ -1928,7 +1928,11 @@ function wpestate_search_with_keyword($adv_search_what,$adv_search_label ){
             $slug         =     sanitize_key($slug); 
             $string       =     wpestate_limit45 ( sanitize_title ($adv_search_label[$key]) );              
             $slug_name    =     sanitize_key($string);
-            $return_custom['keyword']      =    esc_attr(  wp_kses ( $_GET[$slug_name], $allowed_html) );
+
+            if( ! empty(esc_attr(  wp_kses ( $_GET[$slug_name], $allowed_html) ))){
+                $return_custom['keyword'] = esc_attr(  wp_kses ( $_GET[$slug_name], $allowed_html) );
+            }
+            
            
         }else if($term === 'property id' || $term === 'id'){
             
