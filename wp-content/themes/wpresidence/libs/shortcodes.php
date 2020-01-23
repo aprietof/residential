@@ -882,16 +882,12 @@ function wpestate_slider_recent_posts_pictures($attributes, $content = null) {
     }
 
     ///////////////  ADD CUSTOM ARGS TO RECENT POSTS QUERY ////////////
-    $args['tax_query'] = array(
-        // Exclude rented and sold properties
-        array(
-            'taxonomy' => 'property_category',
-            'terms' => array( 'rented', 'sold' ),
-            'field' => 'slug',
-            'operator' => 'NOT IN',
-        ),
-    );
+
+    // Exclude rented and sold properties
+    $args['tax_query'] = array( eapt_not_in_sold_or_rented_tax_query_array() );
+    
     $recent_posts = new WP_Query($args);
+
     ///////////////////////////////////////////////////////////////////
     
     $return_string .=  '<div class="shortcode_slider_wrapper" >';
