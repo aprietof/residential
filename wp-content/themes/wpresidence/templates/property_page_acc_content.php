@@ -156,11 +156,12 @@ if ( count( $feature_list_array )!= 0 && count($feature_list_array)!=1 ){ //  if
 
 <!-- Walkscore -->    
 
+<!-- Virtual Tour -->   
 <?php
     $virtual_tour                   =   get_post_meta($post->ID, 'embed_virtual_tour', true);
-    if($virtual_tour!=''){?>
-
-    
+    $matterport_domain              =   'https://my.matterport.com/';
+    if($virtual_tour != '' && strpos( $virtual_tour, $matterport_domain ) !== false ){?>
+   
 <div class="panel-group property-panel" id="accordion_virtual_tour">  
     <div class="panel panel-default">
         <div class="panel-heading">
@@ -173,11 +174,23 @@ if ( count( $feature_list_array )!= 0 && count($feature_list_array)!=1 ){ //  if
 
         <div id="collapsenine" class="panel-collapse collapse in">
             <div class="panel-body">
-                <?php wpestate_virtual_tour_details($post->ID); ?>
+                <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+                    <iframe 
+                        id="showcase-player" 
+                        src="<?php echo $virtual_tour; ?>" 
+                        frameborder="0" 
+                        allowfullscreen 
+                        allow='xr-spatial-tracking' 
+                        style="position: absolute; left: 0; top: 0;" 
+                        height="100%" 
+                        width="100%">
+                    </iframe>
+                </div>
             </div>
         </div>
     </div>
 </div>  
+<!-- / Virtual Tour -->     
 
 
 

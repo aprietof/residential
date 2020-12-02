@@ -586,8 +586,8 @@ function details_estate_box($post) {
     print'
     <td valign="top" align="left">
       <p class="meta-options">     
-      <label for="embed_video_type">'.__('Virtual Tour ','wpestate').'</label><br />
-        <textarea id="embed_virtual_tour" name="embed_virtual_tour">'.( get_post_meta($mypost, 'embed_virtual_tour', true) ).'</textarea>
+      <label for="embed_video_type">'.__('Virtual Tour Matterport URL','wpestate').'</label><br />
+        <input id="embed_virtual_tour" type="url" name="embed_virtual_tour" value="'.( get_post_meta($mypost, 'embed_virtual_tour', true) ).'" />
     </td>
     </tr>';
     print'
@@ -964,9 +964,9 @@ print '<button class="upload_button button" id="button_new_image" data-postid="'
     </div>';
     
     print'
-    <div class="property_prop_half">   
-        <label for="embed_video_type">'.__('Virtual Tour ','wpestate').'</label><br />
-        <textarea id="embed_virtual_tour" name="embed_virtual_tour">'.( get_post_meta($mypost, 'embed_virtual_tour', true) ).'</textarea>
+    <div style="min-height:60px; width: 100%; float: left;">   
+        <label for="embed_video_type">'.__('Virtual Tour Matterport URL','wpestate').'</label><br />
+        <input id="embed_virtual_tour" type="url" style="width: 81%;" name="embed_virtual_tour" value="'.( get_post_meta($mypost, 'embed_virtual_tour', true) ).'" />
     </div>';
 }
 endif;
